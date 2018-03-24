@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://fb.me/react-0.13.3.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/jsx">
+
+    var Parent = React.createClass({
+        getInitialState: function() {
+            return {
+                textVal: '',
+                children: []
+            };
+        },
+        setStateTextVal: function(textVal) {
+            this.setState({textVal: textVal });
+        },
+        setStateChildren: function(textVal) {
+            var textVals = this.state.children.concat(textVal);
+            this.setState({children: textVals});
+        },
+        render: function() {
+            return (
+                <div>
+                    <p>入力してEnterキーを押す</p>
+                    <ChildInput onChange={this.setStateTextVal} onSave={this.setStateChildren} />
+                    <Child textVal={this.state.textVal} children={this.state.children} />
+                </div>
+            )
+        }
+    });
+
+    var ChildInput = React.createClass({
+        _onChange: function(e) {
+            this.props.onChange(e.target.value);
+        },
+        _onKeyDown: function(e) {
+            if(e.keyCode === 13) {
+                this.props.onSave(e.target.value);
+                e.target.value = '';
+            }
+        },
+        render: function() {
+            return <input type="text" onChange={this._onChange} onKeyDown={this._onKeyDown} />;
+        }
+    });
+
+    var Child = React.createClass({
+        render: function() {
+            var key = 0;
+            var textVals = this.props.children.map(function(textVal) {
+                var date = new Date().toString();
+                return <li key={key++}>{key}.{textVal}({date})</li>;
+            });
+
+            return (
+                <div>
+                    <p>{this.props.textVal}</p>
+                    <ul>{textVals}</ul>
+                </div>
+            );
+        }
+    });
+
+    var m = React.render(<Parent />, document.getElementById('app'));
+
+    </script>
+</body>
+</html>
