@@ -5,31 +5,28 @@ const src  = path.resolve(__dirname, 'src')
 const dist = path.resolve(__dirname, 'dist')
 
 export default {
-  entry: src + '/index.jsx',
-
-  output: {
-    path: dist,
-    filename: 'bundle.js'
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
+    entry: src + '/index.jsx',
+    output: {
+        path: dist,
+        filename: 'bundle.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            }
+        ]
+    },
+    resolve: {
+        extensions: ['*', '.js']
+    },
+    devtool: 'inline-source-map',
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: src + '/index.html',
+            filename: 'index.html'
+        })
     ]
-  },
-
-  resolve: {
-    extensions: ['*', '.js']
-  },
-
-  plugins: [
-      new HtmlWebpackPlugin({
-      template: src + '/index.html',
-      filename: 'index.html'
-    })
-  ]
 }
