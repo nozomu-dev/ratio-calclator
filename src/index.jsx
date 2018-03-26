@@ -132,14 +132,18 @@ class Container extends React.Component {
 
     render() {
         return (
-            <div>
-                <InputFontsize default={this.state.fontsize} update={this.update} />
-                <InputLineHeight default={this.state.lineHeight} update={this.update} />
-                <TitleFirst size={this.state.fontsize * x4} />
-                <TitleSecond size={this.state.fontsize * x3} />
-                <TitleThird size={this.state.fontsize * x2} />
-                <TextMain size={this.state.fontsize} />
-                <TextSmall size={this.state.fontsize / x1} />
+            <div className="container">
+                <div className="sidebar">
+                    <InputFontsize default={this.state.fontsize} update={this.update} />
+                    <InputLineHeight default={this.state.lineHeight} update={this.update} />
+                </div>
+                <div class="contents">
+                    <TitleFirst size={this.state.fontsize * x4} />
+                    <TitleSecond size={this.state.fontsize * x3} />
+                    <TitleThird size={this.state.fontsize * x2} />
+                    <TextMain size={this.state.fontsize} />
+                    <TextSmall size={this.state.fontsize / x1} />
+                </div>
             </div>
         );
     }

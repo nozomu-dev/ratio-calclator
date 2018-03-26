@@ -1,0 +1,48 @@
+
+/**
+ * resets
+ */
+
+body, html, #app {
+    height: 100%;
+}
+
+body,h1,h2,h3,h4,h5,h6,p {
+    padding: 0;
+    margin: 0;
+}
+
+
+/**
+ * layouts
+ */
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    .sidebar {
+        width: 270px;
+        height: 100%;
+        background-color: #5ABF04;
+        color: #fff;
+    }
+    .contents {
+        width: calc(100% - 270px);
+    }
+}
+
+
+/**
+ * Parts styles
+ */
+
+.title-label {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 14px;
+    padding: 2px 5px;
+    background-color: #000;
+    color: #fff;
+}
