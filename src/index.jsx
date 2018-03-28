@@ -1,19 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { SideBar, InputfontSize, InputLineHeight } from './sideBar.jsx';
-import { Text, TextBlock } from './textBlock.jsx';
+import { SideBar, InputfontSize, InputLineHeight } from './SideBar.jsx';
+import { HorizontalGrid, HorizontalGridLayer } from './HorizontalGridLayer.jsx';
+import { Text, TextLayer } from './TextLayer.jsx';
 
 
 
 /**
  * Functional Components
  */
-
-const HorizontallGridLayer = (props) => {
-    return (
-        <div></div>
-    );
-}
 
 const VerticalGridLayer = (props) => {
     return (
@@ -24,7 +19,8 @@ const VerticalGridLayer = (props) => {
 const BaseBlock = (props) => {
     return (
         <div className={'block-base'} style={{width: props.containerWidth + 'px'}}>
-            <TextBlock {...props} />
+            <HorizontalGridLayer {...props} />
+            <TextLayer {...props} />
         </div>
     );
 }
@@ -49,7 +45,6 @@ class Container extends React.Component {
     }
 
     update(newState) {
-        console.log(newState)
         this.setState(newState);
     }
 

@@ -5,6 +5,7 @@ export const SideBar = (props) => {
         <div className="sidebar">
             <Inputs name={'fontSize'} text={'base font size'} default={props.fontSize} update={props.update} />
             <Inputs name={'containerWidth'} text={'container size'} default={props.containerWidth} update={props.update} />
+            <Inputs name={'column'} text={'column'} default={props.column} update={props.update} />
         </div>
     )
 }
@@ -23,8 +24,7 @@ export class Inputs extends React.Component {
         return (
             <div>
                 <label for="">{this.props.text}</label>
-                <input type="text" value={this.props.default} onChange={(event) => this.onChange(this.props.name, event)} />
-                <p>{this.props.default}</p>
+                <input type="number" value={this.props.default} onChange={(event) => this.onChange(this.props.name, event)} />
             </div>
         )
     }

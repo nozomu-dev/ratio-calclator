@@ -6,9 +6,9 @@ const Text = (props) => {
     );
 }
 
-const TextBlock = (props) => {
+const TextLayer = (props) => {
     return (
-        <div>
+        <div className="text-layer">
             <Text size={ props.fontSize * Math.pow( props.culculationRatio, 4 ) } text={"title text"} />
             <Text size={ props.fontSize * Math.pow( props.culculationRatio, 3 ) } text={"title text"} />
             <Text size={ props.fontSize * Math.pow( props.culculationRatio, 2 ) } text={"title text"} />
@@ -19,4 +19,4 @@ const TextBlock = (props) => {
     );
 }
 
-export { Text, TextBlock };
+export { Text, TextLayer };

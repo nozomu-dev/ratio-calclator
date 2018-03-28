@@ -33,7 +33,25 @@ body,h1,h2,h3,h4,h5,h6,p {
         .block-base {
             margin: 0 auto;
             height: 100%;
+            position: relative;
             background: #f7f7f7;
+            .horizontal-grid-layer {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+                justify-content: space-between;
+                .horizontal-grid {
+                    height: 100%;
+                    background: #f1f1f1;
+                }
+            }
+            .text-layer {
+                position: relative;
+                z-index: 1;
+            }
         }
     }
 }
