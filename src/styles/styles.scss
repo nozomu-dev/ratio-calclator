@@ -23,13 +23,18 @@ body,h1,h2,h3,h4,h5,h6,p {
     justify-content: space-between;
     align-items: stretch;
     .sidebar {
-        width: 270px;
+        width: 230px;
         height: 100%;
         background-color: #5ABF04;
         color: #fff;
     }
     .contents {
-        width: calc(100% - 270px);
+        width: calc(100% - 230px);
+        .block-base {
+            margin: 0 auto;
+            height: 100%;
+            background: #f7f7f7;
+        }
     }
 }
 
