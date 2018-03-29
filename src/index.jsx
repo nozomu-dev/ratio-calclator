@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
+
+import { RATIO } from './const.jsx';
 import { SideBar, InputfontSize, InputLineHeight } from './SideBar.jsx';
 import { HorizontalGrid, HorizontalGridLayer } from './HorizontalGridLayer.jsx';
 import { Text, TextLayer } from './TextLayer.jsx';
@@ -10,10 +12,29 @@ import { Text, TextLayer } from './TextLayer.jsx';
  * Functional Components
  */
 
-const VerticalGridLayer = (props) => {
+const VerticalGrid = (props) => {
     return (
-        <div></div>
+        <div className="vertical-grid" style={{height: props.height}}></div>
     );
+}
+
+class VerticalGridLayer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        let height = document.documentElement.clientHeight;
+        let verticalRepeat = height / this.props.lineHeight;
+
+        let verticalGrid = [];
+        for (let i=0; i<verticalRepeat; i++) {
+            verticalGrid.push(<VerticalGrid height={this.props.lineHeight} />)
+        }
+
+        return (
+            <div className="vertical-grid-layer">{verticalGrid}</div>
+        );
+    }
 }
 
 const BaseBlock = (props) => {
@@ -35,25 +56,31 @@ class Container extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            calculationRatio: RATIO.RATIO_GOLD,
             fontSize: 16,
-            culculationRatio: 1.618,
             containerWidth: 980,
             column: 12,
-            gutter: 'line-height'
+            gutter: true
         };
         this.update = this.update.bind(this);
+        this.updateLineHeight = this.updateLineHeight.bind(this);
+        this.lineHeight = this.state.fontSize * this.state.calculationRatio;
     }
 
     update(newState) {
         this.setState(newState);
     }
 
+    updateLineHeight(fontSize, ratio) {
+        this.lineHeight = Number(fontSize) * Number(ratio);
+    }
+
     render() {
         return (
             <div className="container">
-                <SideBar {...this.state} update={this.update}/>
+                <SideBar {...this.state} update={this.update} updateLineHeight={this.updateLineHeight}/>
                 <div className="contents">
-                    <VerticalGridLayer {...this.state} />
+                    <VerticalGridLayer {...this.state} lineHeight={this.lineHeight} />
                     <BaseBlock {...this.state} />
                 </div>
             </div>

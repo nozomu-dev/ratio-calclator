@@ -19,17 +19,30 @@ body,h1,h2,h3,h4,h5,h6,p {
 
 .container {
     height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
     .sidebar {
+        position: fixed;
         width: 230px;
-        height: 100%;
+        height: 100vh;
         background-color: #5ABF04;
         color: #fff;
+        label {
+            display: block;
+        }
     }
     .contents {
+        margin-left: 230px;
         width: calc(100% - 230px);
+        height: 100%;
+        .vertical-grid-layer {
+            width: calc(100% - 230px);
+            height: 100%;
+            position: absolute;
+            left: 230px;
+            z-index: 1;
+            .vertical-grid {
+                border-bottom: 1px dotted #ddd;
+            }
+        }
         .block-base {
             margin: 0 auto;
             height: 100%;
