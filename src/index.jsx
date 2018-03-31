@@ -13,9 +13,9 @@ class RacioCalculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            scaleUnitToUse: 'px',
             metalRatioToUse: RATIO.RATIO_GOLD,
-            calculationRatio: RATIO.RATIO_GOLD,
-            fontSize: 16,
+            fontSize: 14,
             containerWidth: 980,
             column: 12,
             hasGutter: true,
