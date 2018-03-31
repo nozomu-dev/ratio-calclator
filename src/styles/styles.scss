@@ -22,6 +22,7 @@ body {
 
 div {
     box-sizing: border-box;
+    transition: all .3s ease-in-out;
 }
 
 body,h1,h2,h3,h4,h5,h6,p {
@@ -29,12 +30,20 @@ body,h1,h2,h3,h4,h5,h6,p {
     margin: 0;
 }
 
-select, input {
+select, input, textarea {
     -webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
     box-sizing: border-box;
+    background: transparent;
+    border: none;
 }
+textarea {
+    resize: none;
+    display: inline-block;
+    width: 100%;
+}
+
 
 /**
  * layouts
@@ -125,21 +134,23 @@ select, input {
             .text-layer {
                 position: relative;
                 z-index: 1;
+                .title, .text {
+                    display: flex;
+                    align-items: center;
+                }
                 .title {
-                    margin-top: 2rem;
+                    padding-top: 2rem;
                 }
                 .text {
                     margin-top: 1rem;
                 }
                 .title-label {
-                    margin-left: 10px;
                     display: inline-block;
                     padding: 2px 5px;
                     background-color: #000;
                     color: #fff;
                 }
                 .scale-label {
-                    margin-left: 10px;
                     display: inline-block;
                 }
             }
