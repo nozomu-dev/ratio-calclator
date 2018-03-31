@@ -1,92 +1,38 @@
 import React from 'react';
 import { render } from 'react-dom';
-
 import { RATIO } from './const.jsx';
-import { SideBar, InputfontSize, InputLineHeight } from './SideBar.jsx';
-import { HorizontalGrid, HorizontalGridLayer } from './HorizontalGridLayer.jsx';
-import { Text, TextLayer } from './TextLayer.jsx';
-
-
-
-/**
- * Functional Components
- */
-
-const VerticalGrid = (props) => {
-    return (
-        <div className="vertical-grid" style={{height: props.height}}></div>
-    );
-}
-
-class VerticalGridLayer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        let height = document.documentElement.clientHeight;
-        let verticalRepeat = height / this.props.lineHeight;
-
-        let verticalGrid = [];
-        for (let i=0; i<verticalRepeat; i++) {
-            verticalGrid.push(<VerticalGrid height={this.props.lineHeight} />)
-        }
-
-        return (
-            <div className="vertical-grid-layer">{verticalGrid}</div>
-        );
-    }
-}
-
-const BaseBlock = (props) => {
-    return (
-        <div className={'block-base'} style={{width: props.containerWidth + 'px'}}>
-            <HorizontalGridLayer {...props} />
-            <TextLayer {...props} />
-        </div>
-    );
-}
-
+import { Container } from './Container.jsx';
 
 
 /**
  * Parent Components
+ * 設定値を保持し、Containerに引き渡す。
  */
 
-class Container extends React.Component {
+class RacioCalculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            metalRatioToUse: RATIO.RATIO_GOLD,
             calculationRatio: RATIO.RATIO_GOLD,
             fontSize: 16,
             containerWidth: 980,
             column: 12,
-            gutter: true
+            hasGutter: true,
+            documentHeight: document.documentElement.clientHeight
         };
         this.update = this.update.bind(this);
-        this.updateLineHeight = this.updateLineHeight.bind(this);
-        this.lineHeight = this.state.fontSize * this.state.calculationRatio;
     }
 
     update(newState) {
         this.setState(newState);
     }
 
-    updateLineHeight(fontSize, ratio) {
-        this.lineHeight = Number(fontSize) * Number(ratio);
-    }
-
     render() {
         return (
-            <div className="container">
-                <SideBar {...this.state} update={this.update} updateLineHeight={this.updateLineHeight}/>
-                <div className="contents">
-                    <VerticalGridLayer {...this.state} lineHeight={this.lineHeight} />
-                    <BaseBlock {...this.state} />
-                </div>
-            </div>
+            <Container {...this.state} update={this.update} />
         );
     }
 }
 
-
-render(<Container />, document.getElementById('app'));
+render(<RacioCalculator />, document.getElementById('app'));
