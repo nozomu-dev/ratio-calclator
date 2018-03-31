@@ -1,10 +1,27 @@
 
+$color-primary: #5ABF04;
+$color-primary-light: #9EF456;
+
 /**
  * resets
  */
 
 body, html, #app {
-    height: 100%;
+    min-height: 100vh;
+}
+
+html {
+    font-size: 22px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+div {
+    box-sizing: border-box;
 }
 
 body,h1,h2,h3,h4,h5,h6,p {
@@ -12,6 +29,12 @@ body,h1,h2,h3,h4,h5,h6,p {
     margin: 0;
 }
 
+select, input {
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    box-sizing: border-box;
+}
 
 /**
  * layouts
@@ -23,10 +46,46 @@ body,h1,h2,h3,h4,h5,h6,p {
         position: fixed;
         width: 230px;
         height: 100vh;
-        background-color: #5ABF04;
+        background-color: #333;
         color: #fff;
-        label {
-            display: block;
+        font-size: 14px;
+        padding: 1em;
+        .service-title {
+            font-size: 1.7em;
+            color: $color-primary;
+        }
+        .inputs-box {
+            padding-top: 1em;
+            .inputs {
+                margin-top: 2em;
+                label {
+                    display: block;
+                    color: #fff;
+                }
+                input {
+                    margin-top: 1em;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 1px solid #555;
+                    width: 100%;
+                    padding: 1em;
+                    box-sizing: border-box;
+                    color: $color-primary-light;
+                    text-align: right;
+                }
+                select {
+                    margin-top: 1em;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    padding: 1em;
+                    text-align: right;
+                    border-bottom: 1px solid #555;
+                    border-radius: 0;
+                    color: $color-primary-light;
+                    cursor: pointer;
+                }
+            }
         }
     }
     .contents {
@@ -41,13 +100,14 @@ body,h1,h2,h3,h4,h5,h6,p {
             z-index: 1;
             .vertical-grid {
                 border-bottom: 1px dotted #ddd;
+                box-sizing: border-box;
             }
         }
         .block-base {
             margin: 0 auto;
             height: 100%;
             position: relative;
-            background: #f7f7f7;
+            background: #f4f4f4;
             .horizontal-grid-layer {
                 width: 100%;
                 height: 100%;
@@ -56,29 +116,33 @@ body,h1,h2,h3,h4,h5,h6,p {
                 top: 0;
                 display: flex;
                 justify-content: space-between;
+                box-sizing: border-box;
                 .horizontal-grid {
                     height: 100%;
-                    background: #f1f1f1;
+                    background: #ececec;
                 }
             }
             .text-layer {
                 position: relative;
                 z-index: 1;
+                .title {
+                    margin-top: 2rem;
+                }
+                .text {
+                    margin-top: 1rem;
+                }
+                .title-label {
+                    margin-left: 10px;
+                    display: inline-block;
+                    padding: 2px 5px;
+                    background-color: #000;
+                    color: #fff;
+                }
+                .scale-label {
+                    margin-left: 10px;
+                    display: inline-block;
+                }
             }
         }
     }
-}
-
-
-/**
- * Parts styles
- */
-
-.title-label {
-    margin-left: 10px;
-    display: inline-block;
-    font-size: 14px;
-    padding: 2px 5px;
-    background-color: #000;
-    color: #fff;
 }
