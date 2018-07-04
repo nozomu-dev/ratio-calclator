@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+http://competent-colden-3fd0b9.netlify.com/* http://nozomu.jp/:splat 301!
