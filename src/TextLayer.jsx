@@ -37,7 +37,7 @@ class TextLayer extends React.Component {
     render() {
         return (
             <div className="text-layer" style={ {paddingLeft: this.props.data.lineHeight, paddingRight: this.props.data.lineHeight} }>
-                <Text {...this.props} magnification={'4'} className={"title"} text={"Hi,Designers"} />
+                <Text {...this.props} magnification={'4'} className={"title"} text={"Ratio Calculator"} />
                 <Text {...this.props} magnification={'0'} className={"text"} text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est} laborum."} />
                 <Text {...this.props} magnification={'3'} className={"title"} text={"Change Parameters"} />
                 <Text {...this.props} magnification={'0'} className={"text"} text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. laborum."} />
